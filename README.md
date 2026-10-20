@@ -14,7 +14,7 @@
 | 平台 | 地址 | 说明 |
 | --- | --- | --- |
 | GitHub | <https://github.com/gaaibing/PCLMCDL/releases> | 主仓库 |
-| Gitee | <https://gitee.com/gaaibing/PCLMCDL/releases> | 国内访问更快，内容与 GitHub 同步 |
+| Gitee | <https://gitee.com/gaaibing/PCLMCDL/releases> | 国内访问 |
 
 下载 `PCLMCDL.exe` 即可（约 690 KB，另有源码 zip）。
 
