@@ -1,0 +1,18 @@
+# 构建产物
+src/bin/
+src/obj/
+dist/
+
+# 测试用 .minecraft 实例（体积大，含下载的 jar / 库）
+_test/
+
+# 本地工具数据
+.workbuddy/
+
+# 运行时配置（含 .minecraft / Java 路径，因机器而异）
+pclmcdl.config.json
+
+# 系统文件
+Thumbs.db
+desktop.ini
+*.user
