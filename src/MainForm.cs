@@ -168,6 +168,13 @@ public sealed class MainForm : Form
 
     // ============================================================ 标题栏
 
+    /// <summary>程序版本，取自 csproj &lt;Version&gt;，形如 0.5.0。</summary>
+    static string AppVersion()
+    {
+        var v = typeof(MainForm).Assembly.GetName().Version;
+        return v is null ? "0.0" : $"{v.Major}.{v.Minor}.{Math.Max(v.Build, 0)}";
+    }
+
     void BuildTitleBar()
     {
         _titleBar.Dock = DockStyle.Fill;
@@ -228,7 +235,7 @@ public sealed class MainForm : Form
 
         var badge = new TagBadge
         {
-            Text = "测试版",
+            Text = "v" + AppVersion(),
             Margin = Theme.Pad(6, 16, 0, 16),
         };
         left.Controls.AddRange(new Control[] { title, sub, _navDl, _navSet, badge });
@@ -687,7 +694,7 @@ public sealed class MainForm : Form
             Margin = new Padding(0),
             BackColor = Theme.Card,
         };
-        about.Controls.Add(AboutLine("版本 0.1α [测试版]", false));
+        about.Controls.Add(AboutLine($"版本 {AppVersion()}", false));
         about.Controls.Add(AboutLine("PCL 作者：龙腾猫跃", true));
         about.Controls.Add(AboutLink("赞助 PCL 作者（爱发电）：https://afdian.com/a/LTCat",
             "https://afdian.com/a/LTCat"));
