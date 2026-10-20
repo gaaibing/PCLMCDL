@@ -9,6 +9,15 @@
 
 ![界面截图](docs/screenshot.png)
 
+## 下载
+
+| 平台 | 地址 | 说明 |
+| --- | --- | --- |
+| GitHub | <https://github.com/gaaibing/PCLMCDL/releases> | 主仓库 |
+| Gitee | <https://gitee.com/gaaibing/PCLMCDL/releases> | 国内访问更快，内容与 GitHub 同步 |
+
+下载 `PCLMCDL.exe` 即可（约 690 KB，另有源码 zip）。
+
 ## 快速开始
 
 1. 装好 .NET 10 桌面运行时（见下方「准备」）
