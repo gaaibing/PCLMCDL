@@ -1,9 +1,10 @@
-# PCLMCDL
+# PCL 社区MCDL版（PCLMCDL）
 
 [![Release](https://img.shields.io/github/v/release/gaaibing/PCLMCDL?label=release)](https://github.com/gaaibing/PCLMCDL/releases)
 [![Downloads](https://img.shields.io/github/downloads/gaaibing/PCLMCDL/total)](https://github.com/gaaibing/PCLMCDL/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%20x64-0078D4)](#准备)
 [![.NET](https://img.shields.io/badge/.NET-10-512BD4)](https://dotnet.microsoft.com/zh-cn/download/dotnet/10.0)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 为 PCL 补回下载版本的能力。PCL 自身已无法下载版本，用本工具装好之后，回 PCL 启动即可。
 
@@ -103,6 +104,18 @@ PCLMCDL.exe install 1.21.1 --loader neoforge --ver 21.1.80 --dir "D:\PCL2"
 - 赞助：<https://afdian.com/a/LTCat>
 - 源码：<https://github.com/Meloong-Git/PCL>
 
-PCLMCDL 是第三方作品，与 PCL 官方无关。
+PCL 社区MCDL版是第三方基于 PCL 独立进行的二次创作，与 PCL 官方无关。
+名称以 PCL 开头并带第三方后缀，遵循《PCL 分发有限许可》与《PCL 存储库合理使用指南》，
+全文见 [PCL-LICENCE.md](PCL-LICENCE.md)。
 
 通过 WorkBuddy 调用 DeepSeek-v4.1-flash 模型开发，Kimi-K3 审查。
+
+## 许可
+
+| 部分 | 许可 |
+| --- | --- |
+| 本项目作者原创代码 | [MIT](LICENSE) |
+| 参考 PCL 实现思路重写的下载流程 | 《PCL 存储库合理使用指南》 |
+| `src/Resources/forge-installer.jar` | 随 PCL 分发，上游未单独声明许可 |
+
+MIT 只覆盖原创代码，不改变也不能豁免 PCL 相关部分的约束。详见 [NOTICE](NOTICE)。

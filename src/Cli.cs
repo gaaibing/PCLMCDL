@@ -177,7 +177,7 @@ public static class Cli
     static void PrintHelp()
     {
         Log("""
-            PCLMCDL 命令行
+            PCL 社区MCDL版 命令行（PCLMCDL.exe）
               PCLMCDL.exe install <MC版本> [选项]
                 --loader  vanilla|fabric|forge|neoforge|optifine
                 --ver     <加载器版本>

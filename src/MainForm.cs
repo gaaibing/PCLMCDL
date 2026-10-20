@@ -67,7 +67,7 @@ public sealed class MainForm : Form
     {
         // 所有尺寸已由 Theme.S() 按 DPI 换算，禁止 WinForms 再缩放一次
         AutoScaleMode = AutoScaleMode.None;
-        Text = "PCLMCDL";
+        Text = AppName;
         FormBorderStyle = FormBorderStyle.None;
         BackColor = Theme.Bg;
         Font = Theme.F(9.5f);
@@ -168,7 +168,13 @@ public sealed class MainForm : Form
 
     // ============================================================ 标题栏
 
-    /// <summary>程序版本，取自 csproj &lt;Version&gt;，形如 0.5.0。</summary>
+    /// <summary>
+    /// 面向用户的程序名。按《PCL 存储库合理使用指南》重度使用第 2 条，
+    /// 名称须以 PCL 开头并带能表现第三方修改的后缀；PCLMCDL 仅作 exe / 仓库 / 命名空间标识。
+    /// </summary>
+    public const string AppName = "PCL 社区MCDL版";
+
+    /// <summary>程序版本，取自 csproj &lt;Version&gt;，形如 0.5.1。</summary>
     static string AppVersion()
     {
         var v = typeof(MainForm).Assembly.GetName().Version;
@@ -206,7 +212,7 @@ public sealed class MainForm : Form
 
         var title = new Label
         {
-            Text = "PCLMCDL",
+            Text = AppName,
             AutoSize = true,
             Margin = Theme.Pad(0, 15, 14, 15),
             Font = Theme.F(15f, FontStyle.Bold),
@@ -694,15 +700,18 @@ public sealed class MainForm : Form
             Margin = new Padding(0),
             BackColor = Theme.Card,
         };
-        about.Controls.Add(AboutLine($"版本 {AppVersion()}", false));
+        // 首位必须是龙腾猫跃署名与赞助链接（《PCL 存储库合理使用指南》重度使用第 3 条）
         about.Controls.Add(AboutLine("PCL 作者：龙腾猫跃", true));
         about.Controls.Add(AboutLink("赞助 PCL 作者（爱发电）：https://afdian.com/a/LTCat",
             "https://afdian.com/a/LTCat"));
         about.Controls.Add(AboutLink("PCL 项目主页：https://github.com/Meloong-Git/PCL",
             "https://github.com/Meloong-Git/PCL"));
-        about.Controls.Add(AboutLine("PCLMCDL 是第三方作品，与 PCL 官方无关。", false));
+        about.Controls.Add(AboutLine($"{AppName}　版本 {AppVersion()}", false));
+        about.Controls.Add(AboutLine(
+            $"{AppName} 是第三方基于 PCL 独立进行的二次创作，与 PCL 官方无关。", false));
         about.Controls.Add(AboutLine("下载流程参考 PCL 的实现，并复用其内置的 headless 安装器。", false));
-        about.Controls.Add(AboutLine("遵循《PCL 存储库合理使用指南》，源码随程序一同提供。", false));
+        about.Controls.Add(AboutLine(
+            "遵循《PCL 分发有限许可》与《PCL 存储库合理使用指南》，源码在 GitHub / Gitee 公开。", false));
         cardAbout.AddContent(about);
         root.Controls.Add(cardAbout);
 
@@ -1044,11 +1053,11 @@ public sealed class MainForm : Form
             Paths.SaveConfig(cfg);
             _lblStatus.Text = "设置已保存";
             Log($"设置已保存：源={SourceLabel(cfg.Source)}，线程={cfg.Workers}");
-            MessageBox.Show("设置已保存。", "PCLMCDL");
+            MessageBox.Show("设置已保存。", AppName);
         }
         catch (Exception e)
         {
-            MessageBox.Show($"保存失败：{e.Message}\n\n{SuggestFor(e)}", "PCLMCDL",
+            MessageBox.Show($"保存失败：{e.Message}\n\n{SuggestFor(e)}", AppName,
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
@@ -1297,12 +1306,12 @@ public sealed class MainForm : Form
             var mc = _cmbMc.Text.Trim();
             if (string.IsNullOrEmpty(mc))
             {
-                MessageBox.Show("请先选择 Minecraft 版本。", "PCLMCDL");
+                MessageBox.Show("请先选择 Minecraft 版本。", AppName);
                 return;
             }
             if (_mcDir is null || !Directory.Exists(_mcDir))
             {
-                MessageBox.Show("游戏目录无效。请点「自动检测」，或用「浏览…」重新选择。", "PCLMCDL");
+                MessageBox.Show("游戏目录无效。请点「自动检测」，或用「浏览…」重新选择。", AppName);
                 return;
             }
 
@@ -1315,7 +1324,7 @@ public sealed class MainForm : Form
             };
             if (loader is not ("vanilla" or "optifine") && string.IsNullOrEmpty(req.LoaderVersion))
             {
-                MessageBox.Show("请选择加载器版本。", "PCLMCDL");
+                MessageBox.Show("请选择加载器版本。", AppName);
                 return;
             }
             if (loader == "optifine")
@@ -1323,7 +1332,7 @@ public sealed class MainForm : Form
                 var e = _ofEntries.FirstOrDefault(x => x.Patch == req.LoaderVersion);
                 if (e is null)
                 {
-                    MessageBox.Show("请选择 OptiFine 版本。", "PCLMCDL");
+                    MessageBox.Show("请选择 OptiFine 版本。", AppName);
                     return;
                 }
                 req.OptiFineEntry = e;
@@ -1435,7 +1444,7 @@ public sealed class MainForm : Form
             _lblStatus.Text = "安装完成：" + finalName;
             Log($"==== 完成：{finalName} ====");
             _ = DetectAllAsync(false);
-            MessageBox.Show($"版本 {finalName} 已安装。\n打开 PCL 刷新版本列表即可看到。", "PCLMCDL");
+            MessageBox.Show($"版本 {finalName} 已安装。\n打开 PCL 刷新版本列表即可看到。", AppName);
         }
         catch (OperationCanceledException)
         {
@@ -1532,7 +1541,7 @@ public sealed class MainForm : Form
         {
             var r = MessageBox.Show(
                 "下载任务正在进行。\n\n关闭会中断下载，并清理未完成的文件。确定关闭吗？",
-                "PCLMCDL", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (r != DialogResult.Yes)
             {
                 e.Cancel = true;

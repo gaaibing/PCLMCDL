@@ -1,0 +1,43 @@
+PCL 社区MCDL版（PCLMCDL）
+=========================
+
+本项目是第三方基于 Plain Craft Launcher (PCL) 独立进行的二次创作，与 PCL 官方无关。
+
+
+一、许可拆分
+------------
+
+| 部分 | 适用许可 |
+| --- | --- |
+| 作者原创代码（src/Core、src/Ui、src/MainForm.cs、src/Cli.cs 等） | MIT，见 LICENSE |
+| 参考 PCL 实现思路重写的下载流程 | 《PCL 分发有限许可》与《PCL 存储库合理使用指南》，见 PCL-LICENCE.md |
+| src/Resources/forge-installer.jar | 随 PCL 一同分发，上游未单独声明许可，同样按上述指南使用 |
+
+MIT 许可不改变、也不能豁免上述 PCL 相关部分所受的约束。
+
+
+二、对 PCL 的归属
+-----------------
+
+- PCL 作者：龙腾猫跃
+- 赞助：https://afdian.com/a/LTCat
+- 源码：https://github.com/Meloong-Git/PCL
+
+本项目属于上述指南中的「重度使用」：重新实现了 PCL 的部分实质功能
+（下载 Java 版 Minecraft），并再分发 PCL 内置的 headless 安装器。
+据此履行了以下义务：
+
+1. 明确声明本作品为第三方基于 PCL 独立进行的二次创作，与 PCL 官方无关；
+2. 名称以 PCL 开头并带能表现第三方修改的后缀「社区MCDL版」；
+3. 在「关于」页面的首位给出龙腾猫跃署名与赞助链接，源码公开，并继续以该指南为准；
+4. 无 Minecraft 启动功能，因此不涉及正版购买劝导的实现；
+5. 无与 PCL 赞助解锁类似的功能，界面主要色相为蓝色。
+
+
+三、内嵌的 forge-installer.jar
+------------------------------
+
+该文件来自 PCL 的 resources 目录，内含单一类 com.bangbang93.ForgeInstaller，
+用于以 headless 方式调用 Forge / NeoForge 官方安装器。上游作者 bangbang93
+的公开仓库已不可访问，未查到独立许可声明。若原作者提出异议，请开 issue，
+本项目会立即移除该文件并改为本地直接调用官方安装器。
