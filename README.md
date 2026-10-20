@@ -1,6 +1,13 @@
 # PCLMCDL
 
+[![Release](https://img.shields.io/github/v/release/gaaibing/PCLMCDL?label=release)](https://github.com/gaaibing/PCLMCDL/releases)
+[![Downloads](https://img.shields.io/github/downloads/gaaibing/PCLMCDL/total)](https://github.com/gaaibing/PCLMCDL/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows%20x64-0078D4)](#准备)
+[![.NET](https://img.shields.io/badge/.NET-10-512BD4)](https://dotnet.microsoft.com/zh-cn/download/dotnet/10.0)
+
 为 PCL 补回下载版本的能力。PCL 自身已无法下载版本，用本工具装好之后，回 PCL 启动即可。
+
+![界面截图](docs/screenshot.png)
 
 ## 快速开始
 
